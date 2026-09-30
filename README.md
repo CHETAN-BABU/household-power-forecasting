@@ -17,12 +17,20 @@ Download and unzip `household_power_consumption.txt` into `data/` (it's too larg
 6. Out-of-sample comparison on the last 12 months (RMSE)
 
 ## Results
-The series has strong yearly seasonality and fairly constant variance, so an additive structure fits. Holt-Winters additive and seasonal ARIMA both forecast well, and **Auto ARIMA had the lower out-of-sample error**. Holt-Winters stays attractive because it's simpler to explain.
+![12-month hold-out forecast](images/holdout_forecast.png)
+
+| Model | Hold-out RMSE (kW) |
+|---|---|
+| Holt-Winters (additive) | 0.106 |
+| **Auto ARIMA**, SARIMA(0,0,0)(0,1,0)[12] | **0.085** |
+
+The series has strong yearly seasonality and fairly constant variance, so an additive structure fits. Both models track the seasonal dip well, and **Auto ARIMA cut forecast error by about 20%**. Holt-Winters stays attractive because it's simpler to explain.
 
 ## Run it
 ```r
 install.packages(c("dplyr","lubridate","zoo","ggplot2","forecast","astsa","tseries","psych"))
-source("power_forecasting.R")
+source("power_forecasting.R")   # full analysis
+source("plot_holdout.R")        # regenerates the chart above
 ```
 
 ---
