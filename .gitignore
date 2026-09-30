@@ -1,0 +1,8 @@
+.DS_Store
+.ipynb_checkpoints/
+__pycache__/
+.Rhistory
+.RData
+.Rproj.user/
+*.zip
+data/household_power_consumption.txt
